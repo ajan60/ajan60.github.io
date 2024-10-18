@@ -1,11 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    hey
-</body>
+  </head>
+  <body>
+    <button id="cart-add">Add</button>
+
+    <script>
+      function addToCart() {
+        window.top.postMessage(
+          {
+            name: "add-to-cart",
+            data: {
+              id: 3667158,
+              // name: "Product 123",
+              // size: 100,
+              // color: "red",
+              // price: 100,
+            },
+          },
+          "*"
+        );
+      }
+
+      let cartAddButton = document.getElementById("cart-add");
+      cartAddButton.addEventListener("click", addToCart);
+    </script>
+  </body>
 </html>
