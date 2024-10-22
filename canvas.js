@@ -10,8 +10,23 @@ let color = "#0aadff";
 
 function resizeCanvas() {
   const wrapper = canvas.parentElement;
+  const container = wrapper.parentElement;
+  const containerRect = container.getBoundingClientRect();
+
   canvas.width = wrapper.offsetWidth;
   canvas.height = wrapper.offsetHeight;
+
+  if (containerRect.width > containerRect.height) {
+    wrapper.style.width = `${
+      (32 * containerRect.height) / containerRect.width
+    }%`;
+    wrapper.style.height = "42%";
+  } else {
+    wrapper.style.width = "32%";
+    wrapper.style.height = `${
+      (42 * containerRect.width) / containerRect.height
+    }%`;
+  }
 }
 
 function drawCircle(x, y, radius, color) {
@@ -95,3 +110,4 @@ window.addEventListener("mouseup", onMouseUp);
 window.addEventListener("touchend", onMouseUp);
 
 window.addEventListener("resize", resizeCanvas);
+window.addEventListener("orientationchange", resizeCanvas);
