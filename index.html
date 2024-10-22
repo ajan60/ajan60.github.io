@@ -1,32 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button id="cart-add">Add</button>
+    <div class="canvas-container">
+      <img src="shirt.png" alt="shirt" class="prevent-select" />
+      <div class="canvas-wrapper">
+        <canvas id="drawingCanvas"></canvas>
+      </div>
+      <div id="controls">
+        <button id="addToCart">Add to Cart</button>
+      </div>
+    </div>
 
     <script>
-      function addToCart() {
+      const addToCartButton = document.getElementById("addToCart");
+
+      addToCartButton.addEventListener("click", () => {
         window.top.postMessage(
           {
             name: "add-to-cart",
             data: {
-              id: 3667158,
-              // name: "Product 123",
-              // size: 100,
-              // color: "red",
-              // price: 100,
+              variantId: "",
             },
           },
           "*"
         );
-      }
-
-      let cartAddButton = document.getElementById("cart-add");
-      cartAddButton.addEventListener("click", addToCart);
+      });
     </script>
+
+    <script src="canvas.js"></script>
   </body>
 </html>
