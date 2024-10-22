@@ -26,7 +26,7 @@
   transform: translate(-50%, -50%);
   width: 32%;
   height: 42%;
-  border: 2px dashed black;
+  border: 1px dashed white;
   box-sizing: border-box;
 }
 
